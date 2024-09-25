@@ -39,6 +39,8 @@ datos <- datos %>%
   mutate(suma_puntuacion = rowSums(select(., tail(names(.), 10))))
 ```
 
+Buscamos responder a la pregunta ¿El cuidado de voz mejora la
+calidad de la misma? ¿Cuál es la mejor medida?. Por tanto, analizaremos los datos que tengan que ver con esa cuestión, que son: Té formació sobre salut vocal? , Pren alguna o algunes de les medicacions següents?, Segueix una rutina d'higiene vocal?, Fa alguna de les activitats següents? 
 Hay un total de 5 preguntas que nos interesan para responder:
 
 Té formació sobre salut vocal?
