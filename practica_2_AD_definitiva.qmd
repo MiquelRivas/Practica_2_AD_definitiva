@@ -47,4 +47,13 @@ Té formació sobre salut vocal?
 ```{r}
 barplot(table(datos$`Té formació sobre salut vocal?`), las=2)
 ```
+Para la segunda pregunta:
+```{r}
+barplot(table(datos$`Segueix una rutina d'higiene vocal?`), las=2)
+```
+En la tercera pregunta:
+```{r}
+barplot(table(datos$`Fa alguna de les activitats següents? Es pot marcar més d'una opció`), las=2)
+```
+
 
