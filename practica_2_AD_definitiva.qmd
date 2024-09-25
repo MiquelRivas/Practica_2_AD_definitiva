@@ -13,3 +13,11 @@ library(tidyverse)
 datos = read_csv2("Salut_Vocal_anonimizada.csv")
 datos <- datos %>% select(-1,-38)
 ```
+
+```{r}
+col_puntuacion = datos %>%  select(27:36)
+col_puntuacion %>% 
+  mutate(Mai = 0, "Gairebé mai" = 1, "A vegades" = 2, "Gairebé sempre" = 3, "Sempre" = 4) %>% 
+  slice_head(n = 5)
+```
+
