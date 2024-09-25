@@ -34,6 +34,7 @@ datos <- datos %>%
                          "Gairebé sempre" = 3, 
                          "Sempre" = 4)))
 
-
+datos <- datos %>%
+  mutate(suma_puntuacion = rowSums(select(., tail(names(.), 10))))
 ```
 
