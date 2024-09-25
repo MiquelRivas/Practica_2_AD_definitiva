@@ -6,18 +6,34 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(dplyr)
 ```
 
 
 ```{r}
 datos = read_csv2("Salut_Vocal_anonimizada.csv")
 datos <- datos %>% select(-1,-38)
+
+datos <- datos %>%
+  rename_with(
+    # Cambiar nombre a las últimas 10 columnas
+    .fn = function(col_name) paste0("Pregunta", seq_along(col_name)),
+    # Seleccionar las últimas 10 columnas
+    .cols = (ncol(datos) - 9):ncol(datos)
+  )
 ```
 
 ```{r}
-col_puntuacion = datos %>%  select(27:36)
-col_puntuacion %>% 
-  mutate(Mai = 0, "Gairebé mai" = 1, "A vegades" = 2, "Gairebé sempre" = 3, "Sempre" = 4) %>% 
-  slice_head(n = 5)
+datos2 = datos %>%  select(27:36)
+datos <- datos %>%
+  mutate(across(27:36,  # Reemplaza columna1, columna2 con los nombres de las columnas deseadas
+                ~ recode(., 
+                         "Mai" = 0, 
+                         "Gairebé mai" = 1, 
+                         "A vegades" = 2, 
+                         "Gairebé sempre" = 3, 
+                         "Sempre" = 4)))
+
+
 ```
 
