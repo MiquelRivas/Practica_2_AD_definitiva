@@ -23,6 +23,7 @@ datos <- datos %>%
   )
 ```
 
+Seleccionamos las coumnas y cambiamos los nombres
 ```{r}
 datos2 = datos %>%  select(27:36)
 datos <- datos %>%
@@ -36,5 +37,12 @@ datos <- datos %>%
 
 datos <- datos %>%
   mutate(suma_puntuacion = rowSums(select(., tail(names(.), 10))))
+```
+
+Hay un total de 5 preguntas que nos interesan para responder:
+
+Té formació sobre salut vocal?
+```{r}
+barplot(table(datos$`Té formació sobre salut vocal?`), las=2)
 ```
 
